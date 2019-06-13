@@ -6,8 +6,6 @@ import Layout from "../components/layout"
 
 export default ({ data }) => {
   console.log(data)
-  const { html } = data
-
   return (
     <Layout>
       <div>
@@ -36,10 +34,7 @@ export default ({ data }) => {
                 — {node.frontmatter.date}
               </span>
             </h3>
-            <div
-              className="content"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
+            <p>{node.excerpt}</p>
           </div>
         ))}
       </div>
@@ -59,7 +54,6 @@ export const query = graphql`
             date(formatString: "DD MMMM, YYYY")
           }
           excerpt
-          html
         }
       }
     }
