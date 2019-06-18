@@ -28,7 +28,7 @@ export default ({ children }) => {
     >
       <Helmet>
         <meta charSet="utf-8" />
-        <title>My Title</title>
+        <title>Gatsby Tutorial</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <Link to={`/`}>
