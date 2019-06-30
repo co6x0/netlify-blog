@@ -28,7 +28,7 @@ export default ({ data }) => {
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
       totalCount
       edges {
         node {
