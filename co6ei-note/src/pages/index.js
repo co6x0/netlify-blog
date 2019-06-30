@@ -1,3 +1,8 @@
 import React from "react"
 
-export default () => <div>Hello world!</div>
+export default () => (
+  <main>
+    <div>Hello world!</div>
+    <h1>Test Page</h1>
+  </main>
+)
