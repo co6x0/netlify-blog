@@ -1,8 +1,8 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import { css } from "@emotion/core"
-import { rhythm } from "../utils/typography"
-import Layout from "../components/layout"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import { css } from '@emotion/core'
+import { rhythm } from '../utils/typography'
+import Layout from '../components/layout'
 
 export default ({ data }) => {
   console.log(data)
@@ -34,7 +34,7 @@ export default ({ data }) => {
                   margin-bottom: ${rhythm(1 / 4)};
                 `}
               >
-                {node.frontmatter.title}{" "}
+                {node.frontmatter.title}{' '}
                 <span
                   css={css`
                     color: #bbb;
@@ -64,7 +64,7 @@ export const query = graphql`
           id
           frontmatter {
             title
-            date(formatString: "DD MMMM, YYYY")
+            date(formatString: 'DD MMMM, YYYY')
           }
           fields {
             slug
