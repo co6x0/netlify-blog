@@ -24,10 +24,20 @@ export default ({ children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       </Helmet>
-      <Link to={`/`}>
-        <h3>{data.site.siteMetadata.title}</h3>
+      <header>
+        <Link to={`/`}>
+          <h3>{data.site.siteMetadata.title}</h3>
+        </Link>
         <p>{data.site.siteMetadata.description}</p>
-      </Link>
+        <nav>
+          <Link to={`/`}>
+            <p>Home</p>
+          </Link>
+          <Link to={`/blog`}>
+            <p>Blog</p>
+          </Link>
+        </nav>
+      </header>
       {children}
     </main>
   )

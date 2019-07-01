@@ -4,29 +4,14 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 
 export default ({ data }) => {
-  console.log(data)
-
   return (
     <Layout>
-      <div>Hello world!</div>
-      <h1>Test Page</h1>
-
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-        <div key={node.id}>
-          <h3>{node.frontmatter.title} </h3>
-          <p>{node.frontmatter.description}</p>
-          <p>{node.frontmatter.date}</p>
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{ __html: node.html }}
-          />
-        </div>
-      ))}
+      <h1>Hello.</h1>
     </Layout>
   )
 }
 
-export const pageQuery = graphql`
+export const query = graphql`
   query {
     allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
       totalCount
