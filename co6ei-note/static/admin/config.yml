@@ -11,9 +11,9 @@ collections:
     folder: "co6ei-note/src/pages/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-      encoding: "ascii"
-      clean_accents: true
-      sanitize_replacement: ""
+      - encoding: "ascii"
+      - clean_accents: true
+      - sanitize_replacement: ""
     fields:
       - {
           label: "Template Key",
