@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 export default ({ data }) => {
   return (
     <Layout>
-      <h1>Hello.</h1>
+      <h1>hello.</h1>
     </Layout>
   )
 }
