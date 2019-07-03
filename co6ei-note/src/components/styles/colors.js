@@ -1,12 +1,20 @@
 const colors = {
-  black87: 'rgba(0, 0, 0, 0.87)',
-  black54: 'rgba(0, 0, 0, 0.54)',
-  black26: 'rgba(0, 0, 0, 0.26)',
-  black12: 'rgba(0, 0, 0, 0.12)',
-  white100: '#fff',
-  white70: 'rgba(255, 255, 255, 0.70)',
-  white30: 'rgba(255, 255, 255, 0.30)',
-  white12: 'rgba(255, 255, 255, 0.12)',
+  //primary
+  primary1: '#04989A',
+  primary2: '#07BBB8',
+  primary3: '#A3DAD9',
+  primary4: '#DEEDED',
+  //mono
+  mono1: '#1B2C29',
+  mono2: '#5A6D6A',
+  mono3: '#909D9B',
+  mono4: '#D7DBDA',
+  mono5: '#EFF0F0',
+  mono6: '#FFFFFF',
+  //boundary
+  boundaryWhite: 'rgba(255, 255, 255, 0.12)',
+  boundaryBlack: 'rgba(27, 44, 41, 0.09)',
+  //other
   link: '#06b5d4',
   sns: {
     facebook: '#3a579d',

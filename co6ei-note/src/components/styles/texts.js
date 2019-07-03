@@ -1,18 +1,59 @@
 import { css } from '@emotion/core'
 
-const fontFamily = `font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","游ゴシック Medium",YuGothic,YuGothicM,"Hiragino Kaku Gothic ProN",メイリオ,Meiryo,sans-serif;`
+const fontFamily = `lato, source-han-sans-japanese, -apple-system, BlinkMacSystemFont, Roboto, "游ゴシック体", YuGothic, "Yu Gothic Medium", sans-serif`
 
 const texts = {
-  body: css`
+  title: css`
     font-family: ${fontFamily};
-    font-size: 14px;
-    line-height: 110%;
+    font-size: 46px;
+    line-height: 124%;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+  `,
+  heading: css`
+    font-family: ${fontFamily};
+    font-size: 36px;
+    line-height: 120%;
+    font-weight: 600;
+    letter-spacing: -1.4px;
+  `,
+  subhead: css`
+    font-family: ${fontFamily};
+    font-size: 29px;
+    line-height: 134%;
+    font-weight: 600;
+    letter-spacing: -0.8px;
   `,
   strong: css`
     font-family: ${fontFamily};
-    font-size: 14px;
-    line-height: 110%;
+    font-size: 17px;
+    line-height: 200%;
     font-weight: 600;
+    letter-spacing: 0.3px;
+  `,
+  body: css`
+    font-family: ${fontFamily};
+    font-size: 17px;
+    line-height: 200%;
+    letter-spacing: 0.5px;
+  `,
+  caption: css`
+    font-family: ${fontFamily};
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: 0.6px;
+  `,
+  text: css`
+    font-family: ${fontFamily};
+    font-size: 15px;
+    line-height: 151%;
+    letter-spacing: 0.3px;
+  `,
+  small: css`
+    font-family: ${fontFamily};
+    font-size: 12px;
+    line-height: 145%;
+    letter-spacing: 0.2px;
   `,
 }
 

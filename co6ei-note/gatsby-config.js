@@ -7,7 +7,7 @@
 module.exports = {
   siteMetadata: {
     title: `co6ei note`,
-    description: `Nao Komura @co6ei 's Development, Design and other memo`,
+    description: `Nao Komura(Product Designer, Front-end developer)'s Development, Design and other memo`,
   },
   plugins: [
     `gatsby-plugin-netlify-cms`,

@@ -3,11 +3,38 @@ import { Helmet } from 'react-helmet'
 import { useStaticQuery, Link, graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import GlobalStyles from './GlobalStyles'
+import styles from '../components/styles'
 
 const wrap = css`
-  max-width: 800px;
+  max-width: 928px;
   margin: 0 auto;
   padding: 0 16px;
+`
+const header = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const siteNames = css`
+  em {
+    ${styles.texts.title}
+  }
+  p {
+    ${styles.texts.caption}
+    color: ${styles.colors.mono3};
+  }
+`
+
+const nav = css`
+  display: flex;
+  > a {
+    margin-left: 16px;
+
+    &:nth-of-type(1) {
+      margin-left: 0;
+    }
+  }
 `
 
 export default ({ children }) => {
@@ -24,7 +51,7 @@ export default ({ children }) => {
     `
   )
   return (
-    <main css={wrap}>
+    <div css={wrap}>
       <GlobalStyles />
       <Helmet>
         <meta charset="utf-8" />
@@ -32,18 +59,17 @@ export default ({ children }) => {
         <meta name="description" content={data.site.siteMetadata.description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link
-          rel="stylesheet"
-          href="https://use.typekit.net/tnb1vfr.css"
-        ></link>
+        <script src={'webfont.js'}></script>
       </Helmet>
 
-      <header>
-        <Link to={`/`}>
-          <h3>{data.site.siteMetadata.title}</h3>
-        </Link>
-        <p>{data.site.siteMetadata.description}</p>
-        <nav>
+      <header css={header}>
+        <div css={siteNames}>
+          <Link to={`/`}>
+            <em>{data.site.siteMetadata.title}</em>
+          </Link>
+          <p>{data.site.siteMetadata.description}</p>
+        </div>
+        <nav css={nav}>
           <Link to={`/`}>
             <p>Home</p>
           </Link>
@@ -53,8 +79,7 @@ export default ({ children }) => {
         </nav>
       </header>
 
-      <p>YOOOOOOO TEST</p>
       {children}
-    </main>
+    </div>
   )
 }
