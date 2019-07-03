@@ -8,8 +8,8 @@ const description = css`
   color: ${styles.colors.mono3};
 `
 
-export default ({ data }) => {
-  const meta = useStaticQuery(
+export default () => {
+  const data = useStaticQuery(
     graphql`
       query {
         site {
@@ -25,28 +25,8 @@ export default ({ data }) => {
     <Layout>
       <h1>hello.</h1>
       <p css={description}>
-        This site is {meta.site.siteMetadata.description}.
+        This site is {data.site.siteMetadata.description}.
       </p>
     </Layout>
   )
 }
-
-export const query = graphql`
-  query {
-    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            templateKey
-            description
-            date(formatString: "YYYY.MM.DD")
-          }
-          html
-        }
-      }
-    }
-  }
-`
