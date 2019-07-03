@@ -14,6 +14,7 @@ const header = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 24px auto 40px auto;
 `
 
 const siteNames = css`
@@ -29,6 +30,7 @@ const siteNames = css`
 const nav = css`
   display: flex;
   > a {
+    ${styles.texts.body}
     margin-left: 16px;
 
     &:nth-of-type(1) {
@@ -67,7 +69,6 @@ export default ({ children }) => {
           <Link to={`/`}>
             <em>{data.site.siteMetadata.title}</em>
           </Link>
-          <p>{data.site.siteMetadata.description}</p>
         </div>
         <nav css={nav}>
           <Link to={`/`}>
