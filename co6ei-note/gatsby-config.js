@@ -7,10 +7,9 @@
 module.exports = {
   siteMetadata: {
     title: `co6ei note`,
-    description: `Nao Komura(Product Designer, Front-end developer)'s Development, Design and other memo`,
+    description: `Nao Komura(Product Designer, Front-end developer)'s Development, Design and other memorandum`,
   },
   plugins: [
-    `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -18,6 +17,14 @@ module.exports = {
         path: `${__dirname}/src/pages`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-plugin-netlify-cms`,
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -36,5 +43,7 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 }

@@ -2,6 +2,11 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, Link, graphql } from 'gatsby'
 import { css } from '@emotion/core'
+import Img from 'gatsby-image'
+
+//import SVG images
+import Logo from '../images/co6ei_note-logo.svg'
+
 import GlobalStyles from './GlobalStyles'
 import styles from '../components/styles'
 
@@ -49,13 +54,22 @@ export default ({ children }) => {
             description
           }
         }
+        file(relativePath: { eq: "signyan.png" }) {
+          childImageSharp {
+            fixed(width: 200) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
       }
     `
   )
+
   return (
     <div css={wrap}>
       <GlobalStyles />
       <Helmet>
+        <html lang="ja" />
         <meta charset="utf-8" />
         <title>{data.site.siteMetadata.title}</title>
         <meta name="description" content={data.site.siteMetadata.description} />
@@ -67,9 +81,12 @@ export default ({ children }) => {
       <header css={header}>
         <div css={siteNames}>
           <Link to={`/`}>
-            <em>{data.site.siteMetadata.title}</em>
+            <Img fixed={data.file.childImageSharp.fixed} />
+            <img src={Logo} alt="co6ei note" />
           </Link>
         </div>
+      </header>
+      <aside>
         <nav css={nav}>
           <Link to={`/`}>
             <p>Home</p>
@@ -78,7 +95,7 @@ export default ({ children }) => {
             <p>Blog</p>
           </Link>
         </nav>
-      </header>
+      </aside>
 
       {children}
     </div>
