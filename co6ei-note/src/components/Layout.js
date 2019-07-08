@@ -2,13 +2,14 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, Link, graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+
+import Image from './Image'
+import SvgIcons from './SvgIcons'
+import GlobalStyles from './GlobalStyles'
+import styles from './styles'
 
 //import SVG images
 import Logo from '../images/co6ei_note-logo.svg'
-
-import GlobalStyles from './GlobalStyles'
-import styles from '../components/styles'
 
 const wrap = css`
   max-width: 928px;
@@ -44,7 +45,19 @@ const nav = css`
   }
 `
 
-export default ({ children }) => {
+export default ({ children, filenames }) => {
+  filenames = {
+    signyan: 'signyan.png',
+    gatsby: 'gatsby-icon.png',
+  }
+
+  const iconnames = {
+    design: 'categoryDesign',
+    development: 'categoryDevelopment',
+    music: 'categoryMusic',
+    other: 'categoryOther',
+  }
+
   const data = useStaticQuery(
     graphql`
       query {
@@ -52,13 +65,6 @@ export default ({ children }) => {
           siteMetadata {
             title
             description
-          }
-        }
-        file(relativePath: { eq: "signyan.png" }) {
-          childImageSharp {
-            fixed(width: 200) {
-              ...GatsbyImageSharpFixed
-            }
           }
         }
       }
@@ -81,8 +87,8 @@ export default ({ children }) => {
       <header css={header}>
         <div css={siteNames}>
           <Link to={`/`}>
-            <Img fixed={data.file.childImageSharp.fixed} />
-            <img src={Logo} alt="co6ei note" />
+            <Image filename={filenames.signyan} />
+            <Logo alt="co6ei note" />
           </Link>
         </div>
       </header>
@@ -95,6 +101,11 @@ export default ({ children }) => {
             <p>Blog</p>
           </Link>
         </nav>
+
+        <SvgIcons name={iconnames.design} />
+        <SvgIcons name={iconnames.development} />
+        <SvgIcons name={iconnames.music} />
+        <SvgIcons name={iconnames.other} />
       </aside>
 
       {children}
