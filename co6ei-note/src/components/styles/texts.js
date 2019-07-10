@@ -1,6 +1,7 @@
 import { css } from '@emotion/core'
 
 const fontFamily = `lato, source-han-sans-japanese, -apple-system, BlinkMacSystemFont, Roboto, "游ゴシック体", YuGothic, "Yu Gothic Medium", sans-serif`
+const fontFamilyMono = `prestige-elite-std, monospace`
 
 const texts = {
   title: css`
@@ -54,6 +55,12 @@ const texts = {
     font-size: 12px;
     line-height: 145%;
     letter-spacing: 0.2px;
+  `,
+  mono: css`
+    font-family: ${fontFamilyMono};
+    font-size: 13px;
+    line-height: 145%;
+    letter-spacing: 0.8px;
   `,
 }
 
