@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
-export default ({ filename, alt }) => {
+export default ({ name, alt }) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -34,5 +34,5 @@ export default ({ filename, alt }) => {
     return <Img alt={alt} sizes={imageSizes} />
   }
 
-  return getImage(filename, alt)
+  return getImage(name, alt)
 }

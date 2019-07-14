@@ -6,8 +6,14 @@
 
 module.exports = {
   siteMetadata: {
-    title: `co6ei note`,
-    description: `Nao Komura(Product Designer, Front-end developer)'s Development, Design and other memorandum`,
+    title: 'co6ei note',
+    description:
+      "Nao Komura(Product Designer, Front-end developer)'s Development, Design and other memorandum",
+    url: 'https://sixaxd.com',
+    favicon: 'https://sixaxd.com/favicon.png',
+    image: '/default.png',
+    twitterUsername: '@co6ei',
+    facebookAppId: '2332764750271874',
   },
   plugins: [
     {
@@ -45,7 +51,7 @@ module.exports = {
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,
-        icon: `src/images/gatsby-icon.png`,
+        icon: `src/images/favicon.png`,
       },
     },
     `gatsby-plugin-offline`,

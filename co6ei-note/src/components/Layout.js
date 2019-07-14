@@ -1,6 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { useStaticQuery, Link, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import { css } from '@emotion/core'
 
 import Image from './Image'
@@ -22,6 +22,18 @@ const sidePane = css`
   height: 100%;
   min-height: 100vh;
   padding: 0 64px;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: ${styles.colors.boundaryBlack};
+  }
 
   .side-pane-box {
     position: sticky;
@@ -83,13 +95,6 @@ const profile = css`
   }
 `
 
-const header = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 24px auto 40px auto;
-`
-
 const siteNames = css`
   margin-top: 80px;
   p {
@@ -100,40 +105,19 @@ const siteNames = css`
 `
 
 export default ({ children }) => {
-  const filenames = {
-    signyan: 'signyan.png',
-    gatsby: 'gatsby-icon.png',
-  }
-
-  const data = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-          }
-        }
-      }
-    `
-  )
-
   return (
     <div css={wrap}>
       <GlobalStyles />
       <Helmet>
         <html lang="ja" />
-        <meta charset="utf-8" />
-        <title>{data.site.siteMetadata.title}</title>
-        <meta name="description" content={data.site.siteMetadata.description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <script src={'webfont.js'}></script>
+        <script src={'functions/webfont.js'} />
         <link rel="stylesheet" href="https://use.typekit.net/cak8saa.css" />
       </Helmet>
 
       <main css={main}>
-        <header css={header}>
+        <header>
           <div css={siteNames}>
             <Link to={`/`}>
               <SvgIcon name="co6ei_note-logo" alt="co6ei note" />
@@ -170,7 +154,7 @@ export default ({ children }) => {
             </Link>
           </nav>
           <div css={profile}>
-            <Image filename={filenames.signyan} alt="signyan" />
+            <Image name="signyan.png" alt="signyan" />
             <div>
               <div className="external-link">
                 <a href="https://twitter.com/co6ei">

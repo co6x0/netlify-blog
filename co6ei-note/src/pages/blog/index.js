@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../../components/Layout'
 import { css } from '@emotion/core'
 import styles from '../../components/styles'
+import Seo from '../../components/seo'
 
 const row = css`
   display: grid;
@@ -54,6 +55,7 @@ const blogCard = css`
 export default ({ data }) => {
   return (
     <Layout>
+      <Seo title="Blog Archive" description="ブログ一覧ページ" />
       <h1>Blog Page</h1>
 
       <div css={row}>
@@ -63,8 +65,8 @@ export default ({ data }) => {
               <h2>{node.frontmatter.title}</h2>
               <div>
                 {/* Export Tags */}
-                {node.frontmatter.tags.map(data => {
-                  return <p>{data}</p>
+                {node.frontmatter.tags.map((data, i) => {
+                  return <p key={i}>{data}</p>
                 })}
               </div>
               <div>{node.excerpt}</div>
@@ -82,6 +84,7 @@ export const query = graphql`
     allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
       edges {
         node {
+          id
           fields {
             slug
           }
