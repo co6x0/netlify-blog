@@ -17,9 +17,16 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'uploads',
+        path: `${__dirname}/static/assets/uploads`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `src`,
+        name: `pages`,
         path: `${__dirname}/src/pages`,
       },
     },
@@ -38,20 +45,50 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-netlify-cms`,
-    `gatsby-transformer-remark`,
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-netlify-cms',
       options: {
-        name: `co6ei note`,
-        short_name: `co6ei note`,
-        start_url: `/`,
-        background_color: `#6b37bf`,
-        theme_color: `#6b37bf`,
-        // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
-        // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
-        display: `standalone`,
-        icon: `src/images/favicon.png`,
+        modulePath: `${__dirname}/src/cms/cms.js`,
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+              name: `co6ei note`,
+              short_name: `co6ei note`,
+              start_url: `/`,
+              background_color: `#6b37bf`,
+              theme_color: `#6b37bf`,
+              display: `standalone`,
+              icon: `src/images/favicon.png`,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-relative-images',
+            options: {
+              name: 'uploads',
+            },
+          },
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 2048,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static',
+            },
+          },
+        ],
       },
     },
     `gatsby-plugin-offline`,
@@ -59,5 +96,6 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    'gatsby-plugin-netlify',
   ],
 }
