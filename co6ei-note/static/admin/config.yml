@@ -10,9 +10,9 @@ publish_mode: editorial_workflow
 collections:
   - name: 'blog'
     label: 'Blog'
-    folder: 'co6ei-note/src/pages/blog'
+    folder: 'co6ei-note/src/pages/post'
     create: true
-    slug: '{{fields.category}}/{{year}}{{month}}{{day}}{{second}}{{minute}}'
+    slug: '{{year}}{{month}}{{day}}{{second}}{{minute}}'
     fields:
       - {
           label: 'Template Key',
