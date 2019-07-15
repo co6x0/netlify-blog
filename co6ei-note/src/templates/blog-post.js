@@ -1,15 +1,46 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
+// import styles from '../components/styles'
+
+const eyecatch = css`
+  width: 100%;
+  display: block;
+  position: relative;
+
+  &::before {
+    content: '';
+    padding-top: calc(100% / 3 * 2);
+    width: 100%;
+    display: block;
+  }
+
+  > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+`
+
+const blogWrap = css`
+  width: 100%;
+  display: block;
+`
 
 export default ({ data }) => {
   const post = data.markdownRemark
   return (
     <Layout>
       <h1>{post.frontmatter.title}</h1>
-      <img src={post.frontmatter.thumbnail} alt="" />
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <div css={eyecatch}>
+        <img src={post.frontmatter.thumbnail} alt="" />
+      </div>
+      <div css={blogWrap} dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   )
 }
