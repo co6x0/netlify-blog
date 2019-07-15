@@ -40,7 +40,7 @@ function Seo({ title, description, image, pathname, article }) {
   }
 
   const metaTitle =
-    seo.title === defaultTitle ? seo.title : `${seo.title} ${defaultTitle}`
+    seo.title === defaultTitle ? seo.title : `${seo.title} | ${defaultTitle}`
 
   return (
     <>
