@@ -67,7 +67,27 @@ const blogWrap = css`
 
   p {
     ${styles.texts.body}
-    margin-bottom: 56px;
+    margin-bottom: 40px;
+  }
+
+  blockquote {
+    color: ${styles.colors.mono3};
+    border-left: solid 4px;
+    padding: 8px 0 8px 16px;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+
+    > p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  pre {
+    background-color: ${styles.colors.mono1};
+    color: ${styles.colors.mono6};
+    padding: 16px;
+    margin-bottom: 40px;
+    border-radius: 2px;
   }
 `
 
