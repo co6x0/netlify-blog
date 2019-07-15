@@ -37,6 +37,10 @@ const category = css`
   letter-spacing: 0.3px;
 `
 
+const postTags = css`
+  margin: 24px auto 56px auto;
+`
+
 const blogWrap = css`
   width: 100%;
   display: block;
@@ -75,7 +79,7 @@ export default ({ data }) => {
         )}
       </div>
       <h1>{post.frontmatter.title}</h1>
-      <div>
+      <div css={postTags}>
         <p css={category}>
           <span>{post.frontmatter.category}</span>
         </p>

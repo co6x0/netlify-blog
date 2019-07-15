@@ -30,12 +30,14 @@ collections:
           name: 'description',
           widget: 'text',
           required: false,
+          default: null,
         }
       - {
           label: 'Featured Image',
           name: 'thumbnail',
           widget: 'image',
           required: false,
+          default: null,
         }
       - {
           label: 'Category',
@@ -52,4 +54,5 @@ collections:
           name: 'pickup',
           widget: 'boolean',
           required: false,
+          default: false,
         }

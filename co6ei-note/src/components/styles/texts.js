@@ -16,14 +16,21 @@ const texts = {
     font-size: 36px;
     line-height: 120%;
     font-weight: 600;
-    letter-spacing: -1.4px;
+    letter-spacing: 0.6px;
   `,
   subhead: css`
     font-family: ${fontFamily};
     font-size: 29px;
     line-height: 134%;
     font-weight: 600;
-    letter-spacing: -0.8px;
+    letter-spacing: 0.2px;
+  `,
+  callout: css`
+    font-family: ${fontFamily};
+    font-size: 24px;
+    line-height: 134%;
+    font-weight: 600;
+    letter-spacing: 0.4px;
   `,
   strong: css`
     font-family: ${fontFamily};
