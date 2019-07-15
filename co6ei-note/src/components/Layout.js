@@ -15,6 +15,7 @@ const wrap = css`
 
 const main = css`
   margin: 0 200px;
+  padding: 80px 0;
 `
 
 const sidePane = css`
@@ -96,7 +97,7 @@ const profile = css`
 `
 
 const siteNames = css`
-  margin-top: 80px;
+  margin-bottom: 80px;
   p {
     ${styles.texts.mono}
     color: ${styles.colors.mono1};

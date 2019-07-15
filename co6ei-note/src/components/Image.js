@@ -9,8 +9,9 @@ export default ({ name, alt }) => {
         images: allFile {
           edges {
             node {
-              relativePath
               name
+              publicURL
+              relativePath
               childImageSharp {
                 sizes(maxWidth: 1200) {
                   ...GatsbyImageSharpSizes_noBase64
@@ -23,15 +24,21 @@ export default ({ name, alt }) => {
     `
   )
 
-  function getImage(filename, alt) {
+  function getImage(name, alt) {
     const image = data.images.edges.find(n =>
-      n.node.relativePath.includes(filename)
+      n.node.relativePath.includes(name)
     )
 
     if (!image) return null
 
-    const imageSizes = image.node.childImageSharp.sizes
-    return <Img alt={alt} sizes={imageSizes} />
+    if (image.node.relativePath.indexOf('.gif') !== -1) {
+      console.log(image.node.relativePath)
+      return <img src={image.node.publicURL} alt="" />
+    } else {
+      console.log(image.node.relativePath)
+      const imageSizes = image.node.childImageSharp.sizes
+      return <Img alt={alt} sizes={imageSizes} />
+    }
   }
 
   return getImage(name, alt)

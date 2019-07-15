@@ -52,11 +52,15 @@ const blogCard = css`
   }
 `
 
+const title = css`
+  color: ${styles.colors.mono4};
+`
+
 export default ({ data }) => {
   return (
     <Layout>
       <Seo title="Blog Archive" description="ブログ一覧ページ" />
-      <h1>Blog Page</h1>
+      <h1 css={title}>Blog Page</h1>
 
       <div css={row}>
         {data.allMarkdownRemark.edges.map(({ node }) => (
