@@ -64,6 +64,10 @@ const blogWrap = css`
     margin-top: 56px;
     margin-bottom: 16px;
   }
+
+  p {
+    margin-bottom: 56px;
+  }
 `
 
 export default ({ data }) => {
