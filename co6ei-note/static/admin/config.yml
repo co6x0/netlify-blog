@@ -3,7 +3,7 @@ backend:
   branch: master
 
 media_folder: co6ei-note/static/assets/uploads
-public_folder: co6ei-note/static/assets/uploads
+public_folder: assets/uploads
 
 publish_mode: editorial_workflow
 
