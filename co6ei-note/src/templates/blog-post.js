@@ -66,6 +66,7 @@ const blogWrap = css`
   }
 
   p {
+    ${styles.texts.body}
     margin-bottom: 56px;
   }
 `
