@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
+import Image from '../components/Image'
 // import styles from '../components/styles'
 
 const eyecatch = css`
@@ -17,8 +18,8 @@ const eyecatch = css`
     display: block;
   }
 
-  > img {
-    position: absolute;
+  > div {
+    position: absolute !important;
     top: 0;
     left: 0;
     object-fit: cover;
@@ -38,7 +39,7 @@ export default ({ data }) => {
     <Layout>
       <h1>{post.frontmatter.title}</h1>
       <div css={eyecatch}>
-        <img src={post.frontmatter.thumbnail} alt="" />
+        <Image name={post.frontmatter.thumbnail} alt="" />
       </div>
       <div css={blogWrap} dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>

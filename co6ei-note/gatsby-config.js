@@ -17,13 +17,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'uploads',
-        path: `${__dirname}/static/uploads`,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
@@ -56,39 +49,27 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-plugin-manifest`,
-            options: {
-              name: `co6ei note`,
-              short_name: `co6ei note`,
-              start_url: `/`,
-              background_color: `#6b37bf`,
-              theme_color: `#6b37bf`,
-              display: `standalone`,
-              icon: `src/images/favicon.png`,
-            },
-          },
-          {
             resolve: 'gatsby-remark-relative-images',
-            options: {
-              name: 'uploads',
-            },
           },
           {
             resolve: 'gatsby-remark-images',
             options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 2048,
-            },
-          },
-          {
-            resolve: 'gatsby-remark-copy-linked-files',
-            options: {
-              destinationDir: 'static',
+              maxWidth: 1200,
             },
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `co6ei note`,
+        short_name: `co6ei note`,
+        start_url: `/`,
+        background_color: `#6b37bf`,
+        theme_color: `#6b37bf`,
+        display: `standalone`,
+        icon: `src/images/favicon.png`,
       },
     },
     `gatsby-plugin-offline`,
