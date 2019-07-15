@@ -12,6 +12,7 @@ collections:
     label: 'Blog'
     folder: 'co6ei-note/src/pages/post'
     create: true
+    preview_path_date_field: 'updated_on'
     slug: '{{year}}{{month}}{{day}}{{second}}{{minute}}'
     fields:
       - {
