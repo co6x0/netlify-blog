@@ -4,8 +4,9 @@ import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
 import Image from '../components/Image'
+import SvgIcon from '../components/SvgIcon'
 import styles from '../components/styles'
-// import styles from '../components/styles'
+import Seo from '../components/seo'
 
 const eyecatch = css`
   width: 100%;
@@ -29,16 +30,65 @@ const eyecatch = css`
     height: 100%;
   }
 `
-const category = css`
-  ${styles.texts.mono}
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 124%;
-  letter-spacing: 0.3px;
+
+const postInfo = css`
+  margin: 24px auto 56px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
 
-const postTags = css`
-  margin: 24px auto 56px auto;
+const categoryAndTag = css`
+  display: flex;
+
+  > div {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+    .svg-icon {
+      margin-right: 8px;
+      width: 16px;
+      height: auto;
+      display: flex;
+    }
+    p {
+      ${styles.texts.mono}
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 16px;
+      letter-spacing: 0.3px;
+      margin-bottom: 0;
+    }
+  }
+
+  > ul {
+  list-style: none;
+    > li {
+      ${styles.texts.caption}
+      background: ${styles.colors.primary5};
+      color: ${styles.colors.primary2};
+      padding: 0 8px;
+      display: inline-block;
+      margin-right: 8px;
+    }
+  }
+`
+
+const postDate = css`
+  ${styles.texts.caption}
+  color: ${styles.colors.mono3};
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .svg-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
 `
 
 const blogWrap = css`
@@ -94,8 +144,24 @@ const blogWrap = css`
 export default ({ data }) => {
   const post = data.markdownRemark
 
+  let categoryName
+  if (post.frontmatter.category[0] === 'Design') {
+    console.log('design')
+    categoryName = 'design'
+  } else if (post.frontmatter.category[0] === 'Development') {
+    console.log('development')
+    categoryName = 'development'
+  } else if (post.frontmatter.category[0] === 'Music') {
+    console.log('music')
+    categoryName = 'development'
+  } else {
+    console.log(post.frontmatter.category)
+    categoryName = 'other'
+  }
+
   return (
     <Layout>
+      <Seo title={post.frontmatter.title} description={post.excerpt} />
       <div css={eyecatch}>
         {post.frontmatter.thumbnail !== null ? (
           <Image name={post.frontmatter.thumbnail} alt="" />
@@ -104,14 +170,22 @@ export default ({ data }) => {
         )}
       </div>
       <h1>{post.frontmatter.title}</h1>
-      <div css={postTags}>
-        <p css={category}>
-          <span>{post.frontmatter.category}</span>
-        </p>
-        {post.frontmatter.tags.map((data, i) => {
-          return <p key={i}>{data}</p>
-        })}
-        <p>{post.frontmatter.date}</p>
+      <div css={postInfo}>
+        <div css={categoryAndTag}>
+          <div>
+            <SvgIcon name={`category-${categoryName}`} />
+            <p>{post.frontmatter.category}</p>
+          </div>
+          <ul>
+            {post.frontmatter.tags.map((data, i) => {
+              return <li key={i}>{data}</li>
+            })}
+          </ul>
+        </div>
+        <div css={postDate}>
+          <SvgIcon name="mdi-edit-gray" />
+          <p>{post.frontmatter.date}</p>
+        </div>
       </div>
       <div css={blogWrap} dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
@@ -122,6 +196,7 @@ export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      excerpt
       frontmatter {
         title
         templateKey
