@@ -141,27 +141,67 @@ const blogWrap = css`
   }
 `
 
+export const query = graphql`
+  query($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      html
+      excerpt
+      frontmatter {
+        title
+        templateKey
+        tags
+        date(formatString: "YYYY.MM.DD")
+        thumbnail
+        category
+        description
+        pickup
+      }
+      fields {
+        slug
+      }
+    }
+  }
+`
+
 export default ({ data }) => {
   const post = data.markdownRemark
 
+  console.log(post)
+
+  const seoTwitterCardType =
+    post.frontmatter.thumbnail !== null ? 'summary_large_image' : 'summary'
+
+  const seoDescription =
+    post.frontmatter.description !== null
+      ? post.frontmatter.description
+      : post.excerpt
+
+  const seoImage =
+    post.frontmatter.thumbnail !== null
+      ? 'default.png'
+      : post.frontmatter.thumbnail
+
   let categoryName
   if (post.frontmatter.category[0] === 'Design') {
-    console.log('design')
     categoryName = 'design'
   } else if (post.frontmatter.category[0] === 'Development') {
-    console.log('development')
     categoryName = 'development'
   } else if (post.frontmatter.category[0] === 'Music') {
-    console.log('music')
     categoryName = 'development'
   } else {
-    console.log(post.frontmatter.category)
     categoryName = 'other'
   }
 
   return (
     <Layout>
-      <Seo title={post.frontmatter.title} description={post.excerpt} />
+      <Seo
+        title={post.frontmatter.title}
+        description={seoDescription}
+        image={seoImage}
+        pathname={post.fields.slug}
+        cardType={seoTwitterCardType}
+        article
+      />
       <div css={eyecatch}>
         {post.frontmatter.thumbnail !== null ? (
           <Image name={post.frontmatter.thumbnail} alt="" />
@@ -191,22 +231,3 @@ export default ({ data }) => {
     </Layout>
   )
 }
-
-export const query = graphql`
-  query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      excerpt
-      frontmatter {
-        title
-        templateKey
-        tags
-        date(formatString: "YYYY.MM.DD")
-        thumbnail
-        category
-        description
-        pickup
-      }
-    }
-  }
-`
