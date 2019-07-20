@@ -178,8 +178,8 @@ export default ({ data }) => {
 
   const seoImage =
     post.frontmatter.thumbnail !== null
-      ? 'default.png'
-      : post.frontmatter.thumbnail
+      ? post.frontmatter.thumbnail
+      : '/default.png'
 
   let categoryName
   if (post.frontmatter.category[0] === 'Design') {
