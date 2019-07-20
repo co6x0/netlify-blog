@@ -154,6 +154,19 @@ const blogWrap = css`
     ${styles.texts.body}
     margin-bottom: 40px;
 
+    code {
+      ${styles.texts.mono}
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: -0.08px;
+      background: ${styles.colors.mono5};
+      color: ${styles.colors.secondary1};
+      border: solid 1px ${styles.colors.boundaryBlack};
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin: 0 4px;
+    }
+
     ${styles.grids('md')} {
       ${styles.texts.text}
       margin-bottom: 32px;
@@ -179,6 +192,13 @@ const blogWrap = css`
     margin-bottom: 40px;
     border-radius: 2px;
     overflow-x: scroll;
+
+    code {
+      ${styles.texts.mono}
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: -0.08px;
+    }
   }
 `
 

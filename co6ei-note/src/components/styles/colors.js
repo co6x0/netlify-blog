@@ -5,6 +5,9 @@ const colors = {
   primary3: '#69ACBF',
   primary4: '#9FC6D1',
   primary5: '#DEE6E8',
+  //secondary
+  secondary1: '#DC076D',
+  secondary2: '#F15895',
   //mono
   mono1: '#1B2C29',
   mono2: '#5A6D6A',
