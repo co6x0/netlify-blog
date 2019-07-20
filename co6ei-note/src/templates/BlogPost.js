@@ -166,7 +166,7 @@ export const query = graphql`
 export default ({ data }) => {
   const post = data.markdownRemark
 
-  console.log(data)
+  console.log(post)
 
   const seoTwitterCardType =
     post.frontmatter.thumbnail !== null ? 'summary_large_image' : 'summary'
