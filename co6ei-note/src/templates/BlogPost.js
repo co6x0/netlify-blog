@@ -160,13 +160,25 @@ export const query = graphql`
         slug
       }
     }
+    allImageSharp {
+      edges {
+        node {
+          sizes {
+            src
+          }
+        }
+      }
+    }
   }
 `
 
 export default ({ data }) => {
   const post = data.markdownRemark
+  const images = data.allImageSharp.edges
 
-  console.log(post)
+  const featureImageSrc = images.find(n =>
+    n.node.sizes.src.includes(post.frontmatter.thumbnail)
+  )
 
   const seoTwitterCardType =
     post.frontmatter.thumbnail !== null ? 'summary_large_image' : 'summary'
@@ -178,7 +190,7 @@ export default ({ data }) => {
 
   const seoImage =
     post.frontmatter.thumbnail !== null
-      ? post.frontmatter.thumbnail
+      ? featureImageSrc.node.sizes.src
       : '/default.png'
 
   let categoryName
