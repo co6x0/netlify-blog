@@ -1,5 +1,4 @@
 const path = require(`path`)
-const _ = require('lodash')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -17,9 +16,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPostTemplate = path.resolve('./src/templates/blog-post.js')
-  // const tagTemplate = path.resolve('./src/templates/tags.js')
-
   return graphql(`
     {
       allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
@@ -34,17 +30,39 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
   `).then(result => {
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      const slicePath = node.fields.slug.substring(
-        node.fields.slug.indexOf('/articles') + 9
-      )
-      const outputPath = path.join('/blog', slicePath)
+    const posts = result.data.allMarkdownRemark.edges
 
+    posts.forEach(({ node }) => {
       createPage({
-        path: outputPath,
-        component: path.resolve(blogPostTemplate),
+        path: node.fields.slug,
+        component: path.resolve(__dirname, './src/templates/BlogPost.js'),
         context: {
           id: node.id,
+        },
+      })
+    })
+
+    const limit = 1
+    const numberOfPages = Math.ceil(posts.length / limit)
+    const pagePaths = Array.from({ length: numberOfPages }).map(
+      (_, pageNumber) => {
+        return pageNumber === 0
+          ? '/blog'
+          : path.join('/blog', 'page', `${pageNumber + 1}`)
+      }
+    )
+
+    pagePaths.forEach((pagePath, pageNumber) => {
+      const skip = pageNumber * limit
+      createPage({
+        path: pagePath,
+        component: path.resolve(__dirname, './src/templates/BlogIndex.js'),
+        context: {
+          skip,
+          limit,
+          numberOfPages,
+          pagePaths,
+          pageNumber,
         },
       })
     })

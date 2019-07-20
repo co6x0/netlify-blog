@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Twitter from './Twitter'
 import Facebook from './Facebook'
 
-function Seo({ title, description, image, pathname, article }) {
+function Seo({ title, description, image, pathname, cardType, article }) {
   const useSiteMetadata = () => {
     const { site } = useStaticQuery(
       graphql`
@@ -37,6 +37,7 @@ function Seo({ title, description, image, pathname, article }) {
     description: description || defaultDescription,
     image: `${siteUrl}${image || defaultImage}`,
     url: `${siteUrl}${pathname || '/'}`,
+    cardType: cardType || 'summary_large_image',
   }
 
   const metaTitle =
@@ -58,6 +59,7 @@ function Seo({ title, description, image, pathname, article }) {
         appID={facebookAppId}
       />
       <Twitter
+        cardType={cardType}
         username={twitterUsername}
         title={seo.title}
         description={seo.description}

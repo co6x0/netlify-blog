@@ -32,10 +32,8 @@ export default ({ name, alt }) => {
     if (!image) return null
 
     if (image.node.relativePath.indexOf('.gif') !== -1) {
-      console.log(image.node.relativePath)
       return <img src={image.node.publicURL} alt="" />
     } else {
-      console.log(image.node.relativePath)
       const imageSizes = image.node.childImageSharp.sizes
       return <Img alt={alt} sizes={imageSizes} />
     }

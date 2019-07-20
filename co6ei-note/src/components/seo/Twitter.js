@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 export default ({
-  cardType = 'summary_large_image',
+  cardType = null,
   username = null,
   title = null,
   description = null,
