@@ -22,25 +22,29 @@ exports.createPages = ({ graphql, actions }) => {
 
   return graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
         edges {
           node {
             fields {
               slug
             }
+            id
           }
         }
       }
     }
   `).then(result => {
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      const slicePath = node.fields.slug.substring(
+        node.fields.slug.indexOf('/articles') + 9
+      )
+      const outputPath = path.join('/blog', slicePath)
+
       createPage({
-        path: node.fields.slug,
+        path: outputPath,
         component: path.resolve(blogPostTemplate),
         context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
-          slug: node.fields.slug,
+          id: node.id,
         },
       })
     })

@@ -12,7 +12,7 @@ display_url: https://sixaxd.com
 collections:
   - name: 'blog'
     label: 'Blog'
-    folder: 'co6ei-note/src/pages/blog'
+    folder: 'co6ei-note/src/pages/articles'
     create: true
     preview_path_date_field: 'updated_on'
     slug: '{{year}}{{month}}{{day}}{{second}}{{minute}}'

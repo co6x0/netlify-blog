@@ -141,6 +141,25 @@ const blogWrap = css`
   }
 `
 
+export const query = graphql`
+  query($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      html
+      excerpt
+      frontmatter {
+        title
+        templateKey
+        tags
+        date(formatString: "YYYY.MM.DD")
+        thumbnail
+        category
+        description
+        pickup
+      }
+    }
+  }
+`
+
 export default ({ data }) => {
   const post = data.markdownRemark
 
@@ -191,22 +210,3 @@ export default ({ data }) => {
     </Layout>
   )
 }
-
-export const query = graphql`
-  query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      excerpt
-      frontmatter {
-        title
-        templateKey
-        tags
-        date(formatString: "YYYY.MM.DD")
-        thumbnail
-        category
-        description
-        pickup
-      }
-    }
-  }
-`

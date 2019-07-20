@@ -56,36 +56,9 @@ const title = css`
   color: ${styles.colors.mono4};
 `
 
-export default ({ data }) => {
-  return (
-    <Layout>
-      <Seo title="Blog Archive" description="ブログ一覧ページ" />
-      <h1 css={title}>Blog Page</h1>
-
-      <div css={row}>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div css={blogCard} key={node.id}>
-            <Link to={node.fields.slug}>
-              <h2>{node.frontmatter.title}</h2>
-              <div>
-                {/* Export Tags */}
-                {node.frontmatter.tags.map((data, i) => {
-                  return <p key={i}>{data}</p>
-                })}
-              </div>
-              <div>{node.excerpt}</div>
-              <time>{node.frontmatter.date}</time>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </Layout>
-  )
-}
-
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
+    allMarkdownRemark {
       edges {
         node {
           id
@@ -106,3 +79,40 @@ export const query = graphql`
     }
   }
 `
+
+export default ({ data }) => {
+  const posts = data.allMarkdownRemark.edges
+
+  const test = posts.map(({ node }) => {
+    const slicePath = node.fields.slug.substring(
+      node.fields.slug.indexOf('/articles') + 9
+    )
+    const outputPath = `/blog${slicePath}`
+    return outputPath
+  })
+
+  return (
+    <Layout>
+      <Seo title="Blog Archive" description="ブログ一覧ページ" />
+      <h1 css={title}>Blog Page</h1>
+
+      <div css={row}>
+        {posts.map(({ node }, i) => (
+          <div css={blogCard} key={node.id}>
+            <Link to={test[i]}>
+              <h2>{node.frontmatter.title}</h2>
+              <div>
+                {/* Export Tags */}
+                {node.frontmatter.tags.map((data, j) => {
+                  return <p key={j}>{data}</p>
+                })}
+              </div>
+              <div>{node.excerpt}</div>
+              <time>{node.frontmatter.date}</time>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </Layout>
+  )
+}
