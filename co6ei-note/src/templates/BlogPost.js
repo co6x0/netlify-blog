@@ -29,6 +29,18 @@ const eyecatch = css`
     width: 100%;
     height: 100%;
   }
+
+  ${styles.grids('md')} {
+    margin-bottom: 32px;
+  }
+`
+
+const title = css`
+  ${styles.texts.title}
+
+  ${styles.grids('md')} {
+    ${styles.texts.heading}
+  }
 `
 
 const postInfo = css`
@@ -36,6 +48,11 @@ const postInfo = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  ${styles.grids('md')} {
+    display: block;
+    margin: 16px auto;
+  }
 `
 
 const categoryAndTag = css`
@@ -72,6 +89,14 @@ const categoryAndTag = css`
       margin-right: 8px;
     }
   }
+
+  ${styles.grids('md')} {
+    display: block;
+
+    > ul {
+      margin: 12px auto;
+    }
+  }
 `
 
 const postDate = css`
@@ -80,14 +105,14 @@ const postDate = css`
   display: flex;
   align-items: center;
 
-  p {
-    margin-bottom: 0;
-  }
-
   .svg-icon {
     width: 16px;
     height: 16px;
     margin-right: 4px;
+  }
+
+  p {
+    margin-bottom: 0;
   }
 `
 
@@ -95,12 +120,22 @@ const blogWrap = css`
   width: 100%;
   display: block;
 
+  ${styles.grids('md')} {
+    margin-top: 40px;
+  }
+
   h1 {
     ${styles.texts.heading}
     text-align: center;
     margin-top: 120px;
     padding-bottom: 16px;
     border-bottom: solid 1px ${styles.colors.mono1};
+    word-break: break-all;
+
+    ${styles.grids('md')} {
+      ${styles.texts.callout}
+      margin-top: 96px;
+    }
   }
 
   h2 {
@@ -118,6 +153,11 @@ const blogWrap = css`
   p {
     ${styles.texts.body}
     margin-bottom: 40px;
+
+    ${styles.grids('md')} {
+      ${styles.texts.text}
+      margin-bottom: 32px;
+    }
   }
 
   blockquote {
@@ -222,7 +262,7 @@ export default ({ data }) => {
           <Image name="thumbnail/default.png" alt="No eyecatch image" />
         )}
       </div>
-      <h1>{post.frontmatter.title}</h1>
+      <h1 css={title}>{post.frontmatter.title}</h1>
       <div css={postInfo}>
         <div css={categoryAndTag}>
           <div>
@@ -240,7 +280,7 @@ export default ({ data }) => {
           <p>{post.frontmatter.date}</p>
         </div>
       </div>
-      <div css={blogWrap} dangerouslySetInnerHTML={{ __html: post.html }} />
+      <article css={blogWrap} dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   )
 }

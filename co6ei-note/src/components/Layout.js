@@ -10,13 +10,27 @@ import styles from './styles'
 
 const wrap = css`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 400px;
+  grid-template-columns: 1fr 400px;
   width: 100%;
+
+  ${styles.grids('md')} {
+    display: block;
+  }
 `
 
 const main = css`
   margin: 0 200px;
   padding: 80px 0;
+  max-width: 720px;
+
+  ${styles.grids('xl')} {
+    margin: 0 64px;
+  }
+
+  ${styles.grids('md')} {
+    margin: 0 32px;
+    width: calc(100% - 64px);
+  }
 `
 
 const sidePane = css`
@@ -25,6 +39,10 @@ const sidePane = css`
   min-height: 100vh;
   padding: 0 64px;
   position: relative;
+
+  ${styles.grids('md')} {
+    padding: 0 32px;
+  }
 
   &::before {
     content: '';
@@ -103,6 +121,17 @@ const siteNames = css`
     ${styles.texts.mono}
     color: ${styles.colors.mono1};
     margin-top: 12px;
+    margin-bottom: 0;
+  }
+
+  ${styles.grids('md')} {
+    margin-bottom: 32px;
+
+    .svg-icon {
+      > img {
+        width: 180px;
+      }
+    }
   }
 `
 
@@ -145,7 +174,7 @@ export default ({ children }) => {
       <aside css={sidePane}>
         <div className="side-pane-box">
           <nav>
-            <Link className="nav-category" to={`/blog`}>
+            <Link className="nav-category" to={`/`}>
               <SvgIcon name="category-design" alt="" />
               <p>Design</p>
               <SvgIcon name="arrow-forward" alt="カテゴリー一覧へ" />
