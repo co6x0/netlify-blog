@@ -138,6 +138,7 @@ const blogWrap = css`
     padding: 16px;
     margin-bottom: 40px;
     border-radius: 2px;
+    overflow-x: scroll;
   }
 `
 

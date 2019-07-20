@@ -33,9 +33,12 @@ export const query = graphql`
 export default ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark
 
+  const seoPageNum =
+    pageContext.pageNumber !== 0 ? ` Page ${pageContext.pageNumber + 1}` : ''
+
   return (
     <Layout>
-      <Seo title="test" />
+      <Seo title={`Blog Archive${seoPageNum}`} />
       <div>
         {posts.edges.map(({ node }) => (
           <div key={node.id}>

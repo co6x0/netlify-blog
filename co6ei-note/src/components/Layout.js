@@ -10,7 +10,8 @@ import styles from './styles'
 
 const wrap = css`
   display: grid;
-  grid-template-columns: 1fr 400px;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  width: 100%;
 `
 
 const main = css`
