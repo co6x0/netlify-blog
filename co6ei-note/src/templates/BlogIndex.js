@@ -9,8 +9,13 @@ import styles from '../components/styles'
 import Seo from '../components/seo'
 
 const articleWrap = css`
+  margin-bottom: 56px;
+  border-bottom: solid 1px ${styles.colors.boundaryBlack};
+  padding-bottom: 16px;
+
   h1 {
     ${styles.texts.heading}
+    margin-bottom: 12px;
   }
 
   .excerpt {
@@ -19,22 +24,21 @@ const articleWrap = css`
   }
 
   ${styles.grids('md')} {
+    margin-bottom: 40px;
     h1 {
       ${styles.texts.subhead}
-      margin-bottom: 16px;
     }
   }
 `
 
 const postInfo = css`
-  margin: 24px auto;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   ${styles.grids('md')} {
     display: block;
-    margin: 16px auto;
   }
 `
 

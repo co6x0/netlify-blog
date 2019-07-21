@@ -167,9 +167,18 @@ const blogWrap = css`
       margin: 0 4px;
     }
 
+    img {
+      width: 100%;
+    }
+
     ${styles.grids('md')} {
       ${styles.texts.text}
       margin-bottom: 32px;
+      line-height: 178%;
+
+      code {
+        padding: 0 6px;
+      }
     }
   }
 

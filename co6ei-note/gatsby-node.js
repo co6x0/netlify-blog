@@ -42,7 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
 
-    const limit = 1
+    const limit = 4
     const numberOfPages = Math.ceil(posts.length / limit)
     const pagePaths = Array.from({ length: numberOfPages }).map(
       (_, pageNumber) => {
