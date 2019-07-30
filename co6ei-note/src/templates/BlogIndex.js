@@ -130,7 +130,7 @@ export const query = graphql`
     ) {
       edges {
         node {
-          excerpt(pruneLength: 220)
+          excerpt(truncate: true, pruneLength: 220)
           frontmatter {
             title
             templateKey

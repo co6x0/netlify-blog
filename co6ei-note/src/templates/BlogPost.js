@@ -221,7 +221,7 @@ export const query = graphql`
   query($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html
-      excerpt
+      excerpt(truncate: true)
       frontmatter {
         title
         templateKey
