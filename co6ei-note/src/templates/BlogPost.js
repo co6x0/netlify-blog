@@ -150,6 +150,12 @@ const blogWrap = css`
     margin-bottom: 16px;
   }
 
+  ul {
+    ${styles.texts.body}
+    padding-left: 40px;
+    margin-bottom: 40px;
+  }
+
   p {
     ${styles.texts.body}
     margin-bottom: 40px;
