@@ -8,7 +8,7 @@ module.exports = {
   siteMetadata: {
     title: 'co6ei note',
     description:
-      "Nao Komura(Product Designer, Front-end developer)'s Development, Design and other memorandum",
+      `Nao Komura(Product Designer, Front-end developer)'s Development, Design and other memorandum`,
     url: 'https://sixaxd.com',
     favicon: 'https://sixaxd.com/favicon.png',
     image: '/default.png',
@@ -65,6 +65,35 @@ module.exports = {
             resolve: 'gatsby-remark-copy-linked-files',
             options: {
               destinationDir: 'static',
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+              languageExtensions: [
+                {
+                  language: 'superscript',
+                  extend: 'javascript',
+                  definition: {
+                    superscript_types: /(SuperType)/,
+                  },
+                  insertBefore: {
+                    function: {
+                      superscript_keywords: /(superif|superelse)/,
+                    },
+                  },
+                },
+              ],
+              prompt: {
+                user: 'root',
+                host: 'localhost',
+                global: false,
+              },
             },
           },
         ],
