@@ -59,7 +59,7 @@ function Seo({ title, description, image, pathname, cardType, article }) {
         appID={facebookAppId}
       />
       <Twitter
-        cardType={cardType}
+        cardType={seo.cardType}
         username={twitterUsername}
         title={seo.title}
         description={seo.description}
