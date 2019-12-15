@@ -13,8 +13,8 @@ export default ({ name, alt }) => {
               publicURL
               relativePath
               childImageSharp {
-                sizes(maxWidth: 1200) {
-                  ...GatsbyImageSharpSizes_noBase64
+                fluid(maxWidth: 1200) {
+                  ...GatsbyImageSharpFluid_noBase64
                 }
               }
             }
@@ -34,8 +34,8 @@ export default ({ name, alt }) => {
     if (image.node.relativePath.indexOf('.gif') !== -1) {
       return <img src={image.node.publicURL} alt="" />
     } else {
-      const imageSizes = image.node.childImageSharp.sizes
-      return <Img alt={alt} sizes={imageSizes} />
+      const imageSizes = image.node.childImageSharp.fluid
+      return <Img alt={alt} fluid={imageSizes} />
     }
   }
 

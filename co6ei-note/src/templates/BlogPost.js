@@ -239,7 +239,7 @@ export const query = graphql`
     allImageSharp {
       edges {
         node {
-          sizes {
+          fluid(maxWidth: 1200) {
             src
           }
         }
@@ -253,7 +253,7 @@ export default ({ data }) => {
   const images = data.allImageSharp.edges
 
   const featureImageSrc = images.find(n =>
-    n.node.sizes.src.includes(post.frontmatter.thumbnail)
+    n.node.fluid.src.includes(post.frontmatter.thumbnail)
   )
 
   const seoTwitterCardType =
@@ -266,7 +266,7 @@ export default ({ data }) => {
 
   const seoImage =
     post.frontmatter.thumbnail !== null
-      ? featureImageSrc.node.sizes.src
+      ? featureImageSrc.node.fluid.src
       : '/default.png'
 
   let categoryName
