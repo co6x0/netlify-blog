@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
-import Layout from '../components/Layout'
+import Layout from '../layout/article'
 import Image from '../components/Image'
 import SvgIcon from '../components/SvgIcon'
 import styles from '../components/styles'

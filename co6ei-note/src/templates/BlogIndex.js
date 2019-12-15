@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
+import Layout from '../layout/article'
 
 import SvgIcon from '../components/SvgIcon'
 
