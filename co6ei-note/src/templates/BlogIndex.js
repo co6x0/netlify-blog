@@ -52,28 +52,29 @@ const categoryAndTag = css`
     .svg-icon {
       margin-right: 8px;
       width: 16px;
-      height: auto;
+      height: 16px;
       display: flex;
     }
     p {
       ${styles.texts.mono}
-      font-size: 17px;
-      font-weight: 600;
-      line-height: 16px;
-      letter-spacing: 0.3px;
+      line-height: 1;
       margin-bottom: 0;
     }
   }
 
   > ul {
   list-style: none;
+  margin-bottom: -4px;
+  margin-right: 16px;
+
     > li {
       ${styles.texts.caption}
       background: ${styles.colors.primary5};
       color: ${styles.colors.primary2};
       padding: 0 8px;
       display: inline-block;
-      margin-right: 8px;
+      margin-right: 4px;
+      margin-bottom: 4px;
     }
   }
 

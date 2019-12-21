@@ -43,17 +43,19 @@ const sidePane = css`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
+
+        > .svg-icon {
+          width: 16px;
+          height: 16px;
+        }
 
         > p {
           display: inline-block;
           width: calc(100% - 32px - 16px);
           color: ${styles.colors.mono1};
           ${styles.texts.mono};
-          font-weight: 600;
-          font-size: 17px;
-          line-height: 16px;
-          letter-spacing: 0.3px;
+          line-height: 1;
           margin-bottom: 0;
         }
       }
@@ -68,6 +70,8 @@ const profile = css`
 
   .gatsby-image-wrapper {
     width: 88px;
+    min-width: 88px;
+    margin-right: 16px;
   }
 
   > div {

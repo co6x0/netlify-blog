@@ -65,28 +65,29 @@ const categoryAndTag = css`
     .svg-icon {
       margin-right: 8px;
       width: 16px;
-      height: auto;
+      height: 16px;
       display: flex;
     }
     p {
       ${styles.texts.mono}
-      font-size: 17px;
-      font-weight: 600;
-      line-height: 16px;
-      letter-spacing: 0.3px;
+      line-height: 1;
       margin-bottom: 0;
     }
   }
 
   > ul {
   list-style: none;
+  margin-bottom: -4px;
+  margin-right: 16px;
+
     > li {
       ${styles.texts.caption}
       background: ${styles.colors.primary5};
       color: ${styles.colors.primary2};
       padding: 0 8px;
       display: inline-block;
-      margin-right: 8px;
+      margin-right: 4px;
+      margin-bottom: 4px;
     }
   }
 
@@ -150,10 +151,39 @@ const blogWrap = css`
     margin-bottom: 16px;
   }
 
-  ul {
+  hr {
+    margin: 56px auto;
+    border: none;
+    border-bottom: solid 1px ${styles.colors.boundaryBlack};
+  }
+
+  ul, ol {
     ${styles.texts.body}
     padding-left: 40px;
     margin-bottom: 40px;
+
+    > li {
+      ${styles.texts.body}
+
+      > code {
+        ${styles.texts.mono}
+        background: ${styles.colors.mono5};
+        color: ${styles.colors.secondary1};
+        border: solid 1px ${styles.colors.boundaryBlack};
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin: 0 4px;
+        transform: translateY(-2px);
+        display: inline-block;
+        line-height: 1;
+      }
+
+      ${styles.grids('md')} {
+        ${styles.texts.text}
+        margin-bottom: 32px;
+        line-height: 178%;
+      }
+    }
   }
 
   p {
@@ -162,15 +192,15 @@ const blogWrap = css`
 
     code {
       ${styles.texts.mono}
-      font-weight: 600;
-      font-size: 16px;
-      letter-spacing: -0.08px;
       background: ${styles.colors.mono5};
       color: ${styles.colors.secondary1};
       border: solid 1px ${styles.colors.boundaryBlack};
-      padding: 2px 8px;
+      padding: 4px 8px;
       border-radius: 4px;
       margin: 0 4px;
+      transform: translateY(-2px);
+      display: inline-block;
+      line-height: 1;
     }
 
     img {
@@ -183,7 +213,7 @@ const blogWrap = css`
       line-height: 178%;
 
       code {
-        padding: 0 6px;
+        padding: 2px 6px;
       }
     }
   }
@@ -210,9 +240,10 @@ const blogWrap = css`
 
     code {
       ${styles.texts.mono}
-      font-weight: 600;
-      font-size: 16px;
-      letter-spacing: -0.08px;
+    }
+
+    ${styles.grids('md')} {
+      font-size: 15px;
     }
   }
 `

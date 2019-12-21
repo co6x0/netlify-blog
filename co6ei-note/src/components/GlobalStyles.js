@@ -8,6 +8,12 @@ export default () => {
   return (
     <Global
       styles={css`
+        @font-face {
+          /* Only SF font without Japanese font*/
+          font-family: "-apple-system-subset";
+          src: local(-apple-system);
+          unicode-range: U+0000-05C7;
+        }
         body {
           ${styles.texts.text}
           color: ${styles.colors.mono1};
