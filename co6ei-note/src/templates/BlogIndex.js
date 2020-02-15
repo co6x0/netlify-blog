@@ -179,7 +179,6 @@ export default ({ data, pageContext }) => {
             <Link to={node.fields.slug}>
               <h1>{node.frontmatter.title}</h1>
             </Link>
-
             <div css={postInfo}>
               <div css={categoryAndTag}>
                 <div>
