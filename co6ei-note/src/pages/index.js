@@ -40,6 +40,8 @@ const toBlog = css`
   }
 `
 
+console.log(process.env.GATSBY_ACTIVE_ENV, process.env.NODE_ENV)
+
 export default () => {
   const data = useStaticQuery(
     graphql`
