@@ -19,14 +19,14 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'pages',
-        path: '${__dirname}/src/pages',
+        path: `${__dirname}/src/pages`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: '${__dirname}/src/images',
+        path: `${__dirname}/src/images`,
       },
     },
     {
@@ -43,7 +43,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
-        modulePath: '${__dirname}/src/cms/cms.js',
+        modulePath:`${__dirname}/src/cms/cms.js`,
       },
     },
     'gatsby-plugin-netlify',
@@ -69,10 +69,8 @@ module.exports = {
           {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
-              offsetY: '30',
-              icon: false,
-              className: 'custom-class',
-              maintainCase: true,
+              offsetY: '80',
+              icon: false
             },
           },
           {

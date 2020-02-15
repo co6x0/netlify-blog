@@ -248,6 +248,42 @@ const blogWrap = css`
   }
 `
 
+const tableOfContents = css`
+  display: block;
+  border-radius: 2px;
+  background: ${styles.colors.mono5};
+  padding: 24px;
+  margin: 40px auto;
+
+  > h1 {
+    ${styles.texts.callout}
+    margin-bottom: 16px;
+  }
+  
+  > div {
+    > ul {
+      padding-left: 24px;
+      > li {
+        a {
+          font-weight: 700;
+          display: inline-block;
+          margin-bottom: 8px;
+          color: ${styles.colors.mono2};
+        }
+        > ul {
+          padding-left: 24px;
+          a {
+            font-weight: 400;
+            display: inline-block;
+            margin-bottom: 8px;
+            color: ${styles.colors.mono2};
+          }
+        }
+      }
+    }
+  }
+`
+
 export const query = graphql`
   query($id: String!) {
     markdownRemark(id: { eq: $id }) {
@@ -285,7 +321,6 @@ export const query = graphql`
 
 export default ({ data }) => {
   const post = data.markdownRemark
-  console.log(post.tableOfContents)
   const images = data.allImageSharp.edges
 
   const featureImageSrc = images.find(n =>
@@ -305,15 +340,22 @@ export default ({ data }) => {
       ? featureImageSrc.node.fluid.src
       : '/default.png'
 
-  let categoryName
-  if (post.frontmatter.category[0] === 'Design') {
-    categoryName = 'design'
-  } else if (post.frontmatter.category[0] === 'Development') {
-    categoryName = 'development'
-  } else if (post.frontmatter.category[0] === 'Music') {
-    categoryName = 'development'
-  } else {
-    categoryName = 'other'
+  const categoryName = () => {
+    const category = post.frontmatter.category[0]
+    if (category === 'Design') return 'design'
+    else if (category === 'Development') return 'development'
+    else if (category === 'Music') return 'music'
+    else return 'other'
+  }
+
+  const postNavigation = () => {
+    if (!post.tableOfContents.length) return
+    return (
+      <nav css={tableOfContents}>
+        <h1>目次</h1>
+        <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
+      </nav>
+    )
   }
 
   return (
@@ -337,7 +379,7 @@ export default ({ data }) => {
       <div css={postInfo}>
         <div css={categoryAndTag}>
           <div>
-            <SvgIcon name={`category-${categoryName}`} />
+            <SvgIcon name={`category-${categoryName()}`} />
             <p>{post.frontmatter.category}</p>
           </div>
           <ul>
@@ -351,7 +393,7 @@ export default ({ data }) => {
           <p>{post.frontmatter.date}</p>
         </div>
       </div>
-      <nav css={blogWrap} dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
+      {postNavigation()}
       <article css={blogWrap} dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   )
