@@ -16,17 +16,17 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages`,
+        name: 'pages',
+        path: '${__dirname}/src/pages',
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: 'images',
+        path: '${__dirname}/src/images',
       },
     },
     {
@@ -37,13 +37,13 @@ module.exports = {
         },
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-react-helmet`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
+        modulePath: '${__dirname}/src/cms/cms.js',
       },
     },
     'gatsby-plugin-netlify',
@@ -67,7 +67,16 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              offsetY: '30',
+              icon: false,
+              className: 'custom-class',
+              maintainCase: true,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-prismjs',
             options: {
               classPrefix: 'language-',
               inlineCodeMarker: null,
@@ -99,18 +108,18 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `co6ei note`,
-        short_name: `co6ei note`,
-        start_url: `/`,
-        background_color: `#6b37bf`,
-        theme_color: `#6b37bf`,
-        display: `standalone`,
-        icon: `src/images/favicon.png`,
+        name: 'co6ei note',
+        short_name: 'co6ei note',
+        start_url: '/',
+        background_color: '#6b37bf',
+        theme_color: '#6b37bf',
+        display: 'standalone',
+        icon: 'src/images/favicon.png',
       },
     },
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-emotion`
+    'gatsby-plugin-offline',
+    'gatsby-plugin-emotion'
   ],
 }

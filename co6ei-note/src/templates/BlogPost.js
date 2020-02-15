@@ -5,8 +5,8 @@ import { css } from '@emotion/core'
 import Layout from '../layout/article'
 import Image from '../components/Image'
 import SvgIcon from '../components/SvgIcon'
-import styles from '../components/styles'
 import Seo from '../components/seo'
+import styles from '../components/styles'
 
 const eyecatch = css`
   width: 100%;
@@ -252,6 +252,10 @@ export const query = graphql`
   query($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html
+      tableOfContents(
+        absolute: true
+        maxDepth: 2
+      )
       excerpt(truncate: true)
       frontmatter {
         title
@@ -281,6 +285,7 @@ export const query = graphql`
 
 export default ({ data }) => {
   const post = data.markdownRemark
+  console.log(post.tableOfContents)
   const images = data.allImageSharp.edges
 
   const featureImageSrc = images.find(n =>
@@ -346,6 +351,7 @@ export default ({ data }) => {
           <p>{post.frontmatter.date}</p>
         </div>
       </div>
+      <nav css={blogWrap} dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
       <article css={blogWrap} dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   )
