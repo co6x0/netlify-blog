@@ -60,7 +60,7 @@ export default () => {
       <p css={description}>
         This site is {data.site.siteMetadata.description}.
       </p>
-      <p>{process.env.TEST}</p>
+      <p>{process.env.GATSBY_TEST}</p>
       <Link css={toBlog} to={'/blog'}>
         <p>Blog</p>
         <IconArrow />

@@ -3,12 +3,6 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
-if (process.env.NODE_ENV === 'development') {
-  require('dotenv').config({
-    path: `.env.development`,
-  })
-}
-
 module.exports = {
   siteMetadata: {
     title: 'co6ei note',
