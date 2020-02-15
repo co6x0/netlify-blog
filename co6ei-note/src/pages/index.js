@@ -40,12 +40,7 @@ const toBlog = css`
   }
 `
 
-async function getBranch() {
-  const branch = await process.env.BRANCH
-  console.log(branch)
-  return branch
-}
-console.log(getBranch())
+console.log(process.env.GATSBY_TEST, process.env.NETLIFY, process.env.CONTEXT, process.env.NODE_ENV)
 
 export default () => {
   const data = useStaticQuery(
