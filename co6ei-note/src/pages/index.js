@@ -40,6 +40,13 @@ const toBlog = css`
   }
 `
 
+async function getBranch() {
+  const branch = await process.env.BRANCH
+  console.log(branch)
+  return branch
+}
+console.log(getBranch())
+
 export default () => {
   const data = useStaticQuery(
     graphql`
@@ -60,9 +67,6 @@ export default () => {
       <p css={description}>
         This site is {data.site.siteMetadata.description}.
       </p>
-      <p>{process.env.GATSBY_TEST === 'foo' ? 'FOOOO!' : 'BARRRR!'}</p>
-      <p>{process.env.NODE_ENV}</p>
-      <p>{process.env.BRANCH}</p>
       <Link css={toBlog} to={'/blog'}>
         <p>Blog</p>
         <IconArrow />
