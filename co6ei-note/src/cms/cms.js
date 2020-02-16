@@ -2,7 +2,18 @@ import CMS, { init } from 'netlify-cms-app'
 import uploadcare from 'netlify-cms-media-library-uploadcare'
 import cloudinary from 'netlify-cms-media-library-cloudinary'
 
-const { GATSBY_CMS_BRANCH } = process.env
+if (!process.env.NETLIFY) {
+  const config = {
+    collections: [
+      {
+        name: 'blog',
+        label: 'Blog',
+        folder: 'co6ei-note/src/pages/blog/test'
+      }
+    ]
+  }
+  init({ config })
+}
 
 // import BlogPostPreview from './preview-templates/BlogPostPreview'
 
