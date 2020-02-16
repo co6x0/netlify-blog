@@ -15,10 +15,15 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
+  const dir =
+      process.env.NODE_ENV === 'production' ? '^/blog\//' : '^/blog-test\//'
 
   return graphql(`
     {
-      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date]},
+        filter: {fields: {slug: {regex: "${dir}"}}}
+      ){
         edges {
           node {
             fields {
@@ -48,7 +53,7 @@ exports.createPages = ({ graphql, actions }) => {
       (_, pageNumber) => {
         return pageNumber === 0
           ? '/blog'
-          : path.join('/blog', 'page', `${pageNumber + 1}`)
+          : path.join('/blog', '/page', `/${pageNumber + 1}`)
       }
     )
 
@@ -60,6 +65,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           skip,
           limit,
+          dir,
           numberOfPages,
           pagePaths,
           pageNumber,

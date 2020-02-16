@@ -123,10 +123,11 @@ const pagenation = css`
 `
 
 export const query = graphql`
-  query($skip: Int!, $limit: Int!) {
+  query($skip: Int!, $limit: Int!, $dir: String!) {
     allMarkdownRemark(
-      sort: { fields: frontmatter___date, order: DESC }
-      skip: $skip
+      sort: { fields: frontmatter___date, order: DESC },
+      filter: {fields: {slug: {regex: $dir}}},
+      skip: $skip,
       limit: $limit
     ) {
       edges {
