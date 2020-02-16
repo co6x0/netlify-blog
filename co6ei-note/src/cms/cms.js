@@ -3,7 +3,7 @@ import uploadcare from 'netlify-cms-media-library-uploadcare'
 import cloudinary from 'netlify-cms-media-library-cloudinary'
 
 const config = () => {
-  if (process.env.GATSBY_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     console.log('CMS in development')
     return {
       config: {
@@ -18,7 +18,7 @@ const config = () => {
         ]
       }
     }
-  } else if (process.env.GATSBY_ENV === 'production') {
+  } else if (process.env.NODE_ENV === 'production') {
     console.log('CMS in production')
     return {
       config: {
