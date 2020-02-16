@@ -16,7 +16,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   const dir =
-      process.env.NODE_ENV === 'production' ? '^/blog\//' : '^/blog-test\//'
+    process.env.NODE_ENV === 'production' ? '^/blog\//' : '^/blog-test\//'
 
   return graphql(`
     {
