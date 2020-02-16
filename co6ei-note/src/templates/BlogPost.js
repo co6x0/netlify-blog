@@ -16,7 +16,7 @@ const eyecatch = css`
 
   &::before {
     content: '';
-    padding-top: calc(100% / 3 * 2);
+    padding-top: calc(100% / 1.91);
     width: 100%;
     display: block;
   }
