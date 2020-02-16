@@ -40,6 +40,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-netlify',
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
@@ -47,7 +48,6 @@ module.exports = {
         modulePath:`${__dirname}/src/cms/cms.js`,
       },
     },
-    'gatsby-plugin-netlify',
     {
       resolve: 'gatsby-transformer-remark',
       options: {

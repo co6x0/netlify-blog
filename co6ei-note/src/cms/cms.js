@@ -3,28 +3,26 @@ import uploadcare from 'netlify-cms-media-library-uploadcare'
 import cloudinary from 'netlify-cms-media-library-cloudinary'
 
 const config = () => {
-  if (process.env.GATSBY_CMS_BRANCH === 'development') {
+  if (process.env.GATSBY_ENV === 'development') {
     console.log('CMS in development')
     return {
       config: {
         backend: {
-          name: 'git-gateway',
           branch: 'master'
         },
         collections: [
           {
             name: 'blog',
-            folder: 'co6ei-note/src/pages/blog/test'
+            folder: 'co6ei-note/src/pages/blog-test'
           }
         ]
       }
     }
-  } else if (process.env.GATSBY_CMS_BRANCH === 'production') {
+  } else if (process.env.GATSBY_ENV === 'production') {
     console.log('CMS in production')
     return {
       config: {
         backend: {
-          name: 'git-gateway',
           branch: 'production'
         },
         collections: [
