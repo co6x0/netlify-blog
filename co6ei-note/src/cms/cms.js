@@ -2,8 +2,13 @@ import CMS, { init } from 'netlify-cms-app'
 import uploadcare from 'netlify-cms-media-library-uploadcare'
 import cloudinary from 'netlify-cms-media-library-cloudinary'
 
-if (!process.env.NETLIFY) {
+if (process.env.NODE_ENV === 'development') {
+  console.log('aaaaaaaaaaaa')
   const config = {
+    backend: {
+      name: 'git-gateway',
+      branch: 'master'
+    },
     collections: [
       {
         name: 'blog',
