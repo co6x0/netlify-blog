@@ -27,8 +27,8 @@ const main = css`
   }
 
   ${styles.grids('md')} {
-    margin: 0 32px;
-    width: calc(100% - 64px);
+    margin: 0 20px;
+    width: calc(100% - 40px);
   }
 `
 

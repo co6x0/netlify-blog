@@ -6,14 +6,14 @@ const fontFamilyMono = `'Courier Prime', monospace`
 const texts = {
   title: css`
     font-family: ${fontFamily};
-    font-size: 46px;
+    font-size: 44px;
     line-height: 124%;
     font-weight: 700;
     letter-spacing: -0.4px;
   `,
   heading: css`
     font-family: ${fontFamily};
-    font-size: 36px;
+    font-size: 33px;
     line-height: 120%;
     font-weight: 700;
     letter-spacing: 0.6px;
@@ -27,7 +27,7 @@ const texts = {
   `,
   callout: css`
     font-family: ${fontFamily};
-    font-size: 24px;
+    font-size: 22px;
     line-height: 134%;
     font-weight: 700;
     letter-spacing: 0.4px;

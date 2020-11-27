@@ -7,7 +7,7 @@ module.exports = {
   siteMetadata: {
     title: 'co6ei note',
     description:
-      `Nao Komura(Product Designer, Front-end developer)'s Development, Design and other memorandum`,
+      `Nao Komura(Digital Product Designer, Front-end developer)'s Development, Design and other memorandum`,
     url: 'https://sixaxd.com',
     favicon: 'https://sixaxd.com/favicon.png',
     image: '/default.png',

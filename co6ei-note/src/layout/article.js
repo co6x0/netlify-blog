@@ -29,8 +29,9 @@ const main = css`
   }
 
   ${styles.grids('md')} {
-    margin: 0 32px;
-    width: calc(100% - 64px);
+    padding: 64px 0;
+    margin: 0 20px;
+    width: calc(100% - 40px);
   }
 `
 
@@ -46,9 +47,13 @@ const siteNames = css`
   ${styles.grids('md')} {
     margin-bottom: 32px;
 
+    p {
+      font-size: 12px;
+    }
+
     .svg-icon {
       > img {
-        width: 180px;
+        width: 148px;
       }
     }
   }

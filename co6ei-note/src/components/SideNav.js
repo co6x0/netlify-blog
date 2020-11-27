@@ -14,7 +14,7 @@ const sidePane = css`
   position: relative;
 
   ${styles.grids('md')} {
-    padding: 0 32px;
+    padding: 0 20px;
   }
 
   &::before {
@@ -132,7 +132,7 @@ export default () => {
                 <SvgIcon name="logo-github" alt="GitHub" />
               </a>
             </div>
-            <small>copyright © 2019 Nao Komura</small>
+            <small>copyright © Nao Komura</small>
           </div>
         </div>
       </div>

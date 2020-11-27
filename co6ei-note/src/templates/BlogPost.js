@@ -32,6 +32,8 @@ const eyecatch = css`
 
   ${styles.grids('md')} {
     margin-bottom: 32px;
+    width: calc(100% + 40px);
+    margin-left: -20px;
   }
 `
 
@@ -143,12 +145,20 @@ const blogWrap = css`
     ${styles.texts.subhead}
     margin-top: 80px;
     margin-bottom: 16px;
+    ${styles.grids('md')} {
+      ${styles.texts.callout};
+      margin-top: 64px;
+    }
   }
 
   h3 {
     ${styles.texts.callout}
     margin-top: 56px;
     margin-bottom: 16px;
+    ${styles.grids('md')} {
+      ${styles.texts.strong};
+      margin-top: 40px;
+    }
   }
 
   hr {
@@ -190,6 +200,10 @@ const blogWrap = css`
     ${styles.texts.body}
     margin-bottom: 40px;
 
+    a {
+      word-break: break-all;
+    }
+
     code {
       ${styles.texts.mono}
       background: ${styles.colors.mono5};
@@ -214,6 +228,8 @@ const blogWrap = css`
 
       code {
         padding: 2px 6px;
+        word-break: break-all;
+        display: inline;
       }
     }
   }
@@ -240,10 +256,9 @@ const blogWrap = css`
 
     code {
       ${styles.texts.mono}
-    }
-
-    ${styles.grids('md')} {
-      font-size: 15px;
+      ${styles.grids('md')} {
+        font-size: 14px;
+      }
     }
   }
 `
