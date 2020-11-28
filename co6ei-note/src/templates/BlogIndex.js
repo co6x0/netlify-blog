@@ -117,7 +117,9 @@ const pagenation = css`
     margin-right: 12px;
 
     &.current {
-      background: ${styles.colors.primary3};
+      background: transparent;
+      color: ${styles.colors.primary1};
+      border: solid 1px ${styles.colors.primary1};
     }
   }
 `
