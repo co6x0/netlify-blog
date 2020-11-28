@@ -46,6 +46,16 @@ function Seo({ title, description, image, pathname, cardType, article }) {
   return (
     <>
       <Helmet>
+        {/* Global site tag (gtag.js) - Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDHKSVZ0B1"></script>
+        <script>{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-WDHKSVZ0B1');
+          `}
+        </script>
         <title>{metaTitle}</title>
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
